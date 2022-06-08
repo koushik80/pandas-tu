@@ -34,4 +34,50 @@ new_df = df.dropna()
 
 print(new_df.to_string())
 
-#Note: By default, the dropna() method returns a new DataFrame, and will not change the original.
+#**Note: By default, the dropna() method returns a new DataFrame, and will not change the original.
+
+#If you want to change the original DataFrame, use the
+
+          # inplace = True argument:
+
+#import pandas as pd
+#df = pd.read_csv('data.csv')
+
+df.dropna(inplace=True)
+
+#print(df.to_string())
+
+#***Note: Now, the dropna(inplace = True) will NOT return a new DataFrame,
+#but it will remove all rows containing NULL values from the original DataFrame.
+
+#Replace Empty Values
+#Another way of dealing with empty cells is to insert a new value instead.
+
+#This way you do not have to delete entire rows just because of some empty cells.
+
+#The fillna() method allows us to replace empty cells with a value:
+
+#Example
+#Replace NULL values with the number 130:
+
+#import pandas as pd
+
+#df = pd.read_csv('data.csv')
+
+df.fillna(130, inplace=True)
+
+
+#Replace Only For Specified Columns
+#The example above replaces all empty cells in the whole Data Frame.
+
+#To only replace empty values for one column,
+#specify the column name for the DataFrame:
+
+#Example
+#Replace NULL values in the "Calories" columns with the number 130:
+
+#import pandas as pd
+
+#df = pd.read_csv('data.csv')
+
+df["Calories"].fillna(130, inplace=True)
